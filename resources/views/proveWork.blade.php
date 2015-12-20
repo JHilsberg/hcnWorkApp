@@ -32,10 +32,15 @@
                                 <td>
                                     {!! Form::open(array('route' => array('newWork.update', 'id' => $activity->id),
                                     'method' => 'put', 'style' => 'margin-bottom: 0px;')) !!}
-                                    {!! Form::submit('Bestätigen', array('class' => 'btn btn-success')) !!}
+                                    {!! Form::submit('Bestätigen', array('class' => 'btn btn-success center-block')) !!}
                                     {!! Form::close() !!}
                                 </td>
-                                <td><a href="#" class="btn btn-warning" role="button">Ablehnen</a></td>
+                                <td>
+                                    {!! Form::open(array('route' => array('newWork.destroy', 'id' => $activity->id),
+                                    'method' => 'delete', 'style' => 'margin-bottom: 0px;')) !!}
+                                    {!! Form::submit('Ablehnen', array('class' => 'btn btn-warning center-block')) !!}
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                         @empty
                             <tr>

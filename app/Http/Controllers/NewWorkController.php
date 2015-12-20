@@ -120,7 +120,9 @@ class NewWorkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        WorkActivity::destroy($id);
+
+        return back();
     }
 
     public function showProveWorkActivities()

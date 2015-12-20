@@ -20,7 +20,7 @@
         <li {!! (Request::is('proveWork') ? 'class=active' : '') !!}><a href="{!! URL::route('proveWork') !!}">Stunden bestätigen</a></li>
         @endif
         @if(Auth::user()->isAdmin())
-          <li><a href="#">Nutzerverwaltung</a></li>
+          <li {!! (Request::is('user') ? 'class=active' : '') !!}><a href="{!! URL::route('user.index') !!}">Nutzerverwaltung</a></li>
           <li><a href="#">Vereinsübersicht</a></li>
         @endif
       </ul>

@@ -33,6 +33,7 @@ Route::controllers([
 Route::group(array('middleware' => 'auth'), function() {
 
     Route::resource('newWork', 'NewWorkController');
+    Route::resource('user', 'UserController');
     Route::get('proveWork', 'NewWorkController@showProveWorkActivities')->name('proveWork');
 
 });

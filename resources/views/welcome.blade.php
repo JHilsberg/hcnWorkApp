@@ -18,7 +18,11 @@
         </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-md-6 col-xs-6">
-                <a href="auth/login" class = "btn btn-primary btn-large" role="button">Anmelden</a>
+                @if(Auth::guest())
+                    <a href="auth/login" class = "btn btn-primary btn-large" role="button">Anmelden</a>
+                @else
+                    <a href="newWork/create" class = "btn btn-primary btn-large" role="button">Anmelden</a>
+                @endif
             </div>
             <div class="col-md-6 col-xs-6">
                 <a class = "btn btn-success btn-large" href = "auth/register" role="button">Registrieren</a>

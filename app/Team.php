@@ -21,7 +21,14 @@ class Team extends Model
     protected $fillable = ['name', 'number'];
 
 
-    public function getAllTeams(){
+    public function getAllTeams()
+    {
         return $this->lists('name', 'id');
     }
+
+    public function users()
+    {
+        return $this->hasMany('user', 'team_id');
+    }
+
 }

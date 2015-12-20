@@ -68,4 +68,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\WorkActivity', 'prover_id');
     }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Team');
+    }
 }
