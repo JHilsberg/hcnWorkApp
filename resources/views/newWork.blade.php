@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Datum der Arbeitsmaßname</label>
                     <div class="col-md-6 datepicker-container">
-                        <input class="form-control" name="date" value="{{ old('date') }}" data-provide="datepicker" data-date-format="dd.mm.yyyy"
+                        <input readonly="true" class="form-control" name="date" value="{{ old('date') }}" data-provide="datepicker" data-date-format="dd.mm.yyyy"
                         data-date-language="de" data-date-today-highlight="true" data-date-container=".datepicker-container" data-date-end-date="today">
                     </div>
                 </div>

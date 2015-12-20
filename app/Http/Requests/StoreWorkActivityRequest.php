@@ -25,10 +25,10 @@ class StoreWorkActivityRequest extends Request
     public function rules()
     {
         return [
-            'date'          => 'required|date_format:d.m.Y',
+            'date'          => 'required|date_format:d.m.Y|before:tomorrow',
             'description'   => 'required',
             'prover_id'     => 'required|integer',
-            'hours'         => 'required|numeric|min:0.5|max:9'
+            'hours'         => 'required|numeric|min:0.5|max:9|digits_between:1,3'
         ];
     }
 }

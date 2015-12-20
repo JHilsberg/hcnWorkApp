@@ -104,7 +104,12 @@ class NewWorkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $workActivity = WorkActivity::find($id);
+        $workActivity->proven = true;
+
+        $workActivity->save();
+
+        return back();
     }
 
     /**
@@ -118,8 +123,8 @@ class NewWorkController extends Controller
         //
     }
 
-    public function showProveWorkActivities(){
-
+    public function showProveWorkActivities()
+    {
         $activities_to_prove = Auth::user()->proveWorkActivities()->where('proven', false)->orderBy('date', 'desc')->get();
         return view('proveWork', ['activities_to_prove' => $activities_to_prove]);
     }

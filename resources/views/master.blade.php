@@ -9,6 +9,7 @@
         <script type="text/javascript" src="/bootstrap/js/bootstrap-datepicker.min.js"></script>
         <script type="text/javascript" src="/bootstrap/locales/bootstrap-datepicker.de.min.js"></script>
         <script type="text/javascript" src="/js/custom.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
         <div class="container main">

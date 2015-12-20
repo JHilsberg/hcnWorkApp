@@ -42,7 +42,8 @@
                     <div class="col-md-8 col-md-offset-2">
                         @if($work_activities->where('proven', 1)->sum('hours') <= 10)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{$work_activities->where('proven', 1)->sum('hours')}}"
+                                <div class="progress-bar" role="progressbar"
+                                     aria-valuenow="{{$work_activities->where('proven', 1)->sum('hours')}}"
                                      aria-valuemin="0" aria-valuemax="10"
                                      style="width:{{$work_activities->where('proven', 1)->sum('hours') / 10 * 100}}%;">
                                     {{$work_activities->where('proven', 1)->sum('hours')}} von 10
@@ -68,8 +69,9 @@
                 <h4>Übersicht Arbeitsmaßnahmen</h4>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
                         <tr>
                             <th>Beschreibung</th>
                             <th>Datum</th>
@@ -77,8 +79,8 @@
                             <th>Bestätigt?</th>
                             <th>Bestätiger</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         @forelse($work_activities as $work_activity)
                             <tr>
                                 <td>{{$work_activity->description}}</td>
@@ -92,8 +94,9 @@
                                 <td colspan="5" style="text-align: center"><h4>Keine eingetragenen Arbeiten</h4></td>
                             </tr>
                         @endforelse
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 @endsection
