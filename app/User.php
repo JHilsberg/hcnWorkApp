@@ -55,7 +55,8 @@ class User extends Model implements AuthenticatableContract,
 
     public function getAllProvers(){
         $provers= $this::select(
-            DB::raw("CONCAT(first_name,' ',surname) AS full_name, id"))->where('is_prover', 1)->lists('full_name', 'id');
+            DB::raw("CONCAT(first_name,' ',surname) AS full_name, id"))->where('is_prover', 1)
+            ->orderBy('surname', 'asc')->lists('full_name', 'id');
         return $provers;
     }
 

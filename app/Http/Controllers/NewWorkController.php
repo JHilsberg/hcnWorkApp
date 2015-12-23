@@ -24,7 +24,7 @@ class NewWorkController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $work_activities = $user->workActivities()->orderBy('date', 'desc')->get();
+        $work_activities = $user->workActivities()->where('active', true)->orderBy('date', 'desc')->get();
         return view('yourWork', ['user' => $user, 'work_activities' => $work_activities]);
     }
 
@@ -127,7 +127,7 @@ class NewWorkController extends Controller
 
     public function showProveWorkActivities()
     {
-        $activities_to_prove = Auth::user()->proveWorkActivities()->where('proven', false)->orderBy('date', 'desc')->get();
+        $activities_to_prove = Auth::user()->proveWorkActivities()->where('proven', false)->where('active', true)->orderBy('date', 'desc')->get();
         return view('proveWork', ['activities_to_prove' => $activities_to_prove]);
     }
 }
