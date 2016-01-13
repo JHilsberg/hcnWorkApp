@@ -28,7 +28,7 @@ class Team extends Model
 
     public function users()
     {
-        return $this->hasMany('user', 'team_id');
+        return $this->hasMany('App\User', 'team_id');
     }
 
 }

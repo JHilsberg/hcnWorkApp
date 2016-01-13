@@ -21,7 +21,7 @@
         @endif
         @if(Auth::user()->isAdmin())
           <li {!! (Request::is('user') ? 'class=active' : '') !!}><a href="{!! URL::route('user.index') !!}">Nutzerverwaltung</a></li>
-          <li><a href="#">Vereinsübersicht</a></li>
+          <li {!! (Request::is('club') ? 'class=active' : '') !!}><a href="{!! URL::route('club.index') !!}">Vereinsübersicht</a></li>
         @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">

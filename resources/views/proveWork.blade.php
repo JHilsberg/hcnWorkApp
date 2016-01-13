@@ -37,7 +37,8 @@
                                 </td>
                                 <td>
                                     {!! Form::open(array('route' => array('newWork.destroy', 'id' => $activity->id),
-                                    'method' => 'delete', 'style' => 'margin-bottom: 0px;')) !!}
+                                    'method' => 'delete', 'style' => 'margin-bottom: 0px;',
+                                     'onsubmit' => 'return confirm("Arbeitsstundeneintrag ablehnen?");')) !!}
                                     {!! Form::submit('Ablehnen', array('class' => 'btn btn-warning center-block')) !!}
                                     {!! Form::close() !!}
                                 </td>

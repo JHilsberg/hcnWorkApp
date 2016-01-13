@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.27 (LTS) on 2015-12-22.
+ * Generated for Laravel 5.1.27 (LTS) on 2015-12-24.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12730,6 +12730,54 @@ namespace {
          */
         public static function hasMacro($name){
             return \Illuminate\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class Lava extends \Khill\Lavacharts\Laravel\LavachartsFacade{
+        
+        /**
+         * Renders the chart into the page
+         * 
+         * Given a chart label and an HTML element id, this will output
+         * all of the necessary javascript to generate the chart.
+         *
+         * @access public
+         * @since v2.0.0
+         * @param string $chartType Type of chart to render.
+         * @param string $chartLabel Label of a saved chart.
+         * @param string $elementId HTML element id to render the chart into.
+         * @param mixed $divDimensions Set true for div creation, or pass an array with height & width
+         * @return string 
+         * @static 
+         */
+        public static function render($chartType, $chartLabel, $elementId, $divDimensions = false){
+            return \Khill\Lavacharts\Lavacharts::render($chartType, $chartLabel, $elementId, $divDimensions);
+        }
+        
+        /**
+         * Outputs the link to the Google JSAPI
+         *
+         * @access public
+         * @since v2.3.0
+         * @return string 
+         * @static 
+         */
+        public static function jsapi(){
+            return \Khill\Lavacharts\Lavacharts::jsapi();
+        }
+        
+        /**
+         * Checks to see if the given chart type and title exists in the volcano storage.
+         *
+         * @access public
+         * @since v2.4.2
+         * @return string 
+         * @static 
+         */
+        public static function exists($type, $label){
+            return \Khill\Lavacharts\Lavacharts::exists($type, $label);
         }
         
     }

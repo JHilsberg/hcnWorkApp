@@ -34,6 +34,10 @@ Route::group(array('middleware' => 'auth'), function() {
 
     Route::resource('newWork', 'NewWorkController');
     Route::resource('user', 'UserController');
-    Route::get('proveWork', 'NewWorkController@showProveWorkActivities')->name('proveWork');
+    Route::resource('club', 'ClubController');
 
+    Route::get('proveWork', 'NewWorkController@showProveWorkActivities')->name('proveWork');
+    Route::get('export', 'ClubController@export')->name('club.export');
+    Route::get('mail', 'ClubController@sendMailToUsers')->name('club.mail');
+    Route::put('deactivateHours', 'ClubController@setAllHoursOnInactive')->name('club.setInactive');
 });

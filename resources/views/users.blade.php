@@ -16,8 +16,9 @@
                         <tr>
                             <th class="col-md-3">Nachname</th>
                             <th class="col-md-3">Vorname</th>
-                            <th class="col-md-3">Team</th>
+                            <th class="col-md-1">Team</th>
                             <th class="col-md-3">Bestätiger</th>
+                            <th class="col-md-2">Entfernen</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,15 @@
                                         {!! Form::close() !!}
                                     </td>
                                 @endif
+                                <td>
+                                    {!! Form::open(array('route' => array('user.destroy', 'id' => $user->id),
+                                        'method' => 'delete', 'style' => 'margin-bottom: 0px;',
+                                        'onsubmit' => 'return confirm("Den betreffenden Nutzer wirklich löschen?");')) !!}
+                                    <button type="submit" class="btn btn-danger col-md-8 col-md-offset-2">
+                                        <span class="glyphicon glyphicon-remove"></span> Entfernen
+                                    </button>
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
