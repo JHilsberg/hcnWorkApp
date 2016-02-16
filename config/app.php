@@ -149,7 +149,8 @@ return [
         //extra providers
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
-        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        Fadion\Maneuver\ManeuverServiceProvider::class
     ],
 
     /*
