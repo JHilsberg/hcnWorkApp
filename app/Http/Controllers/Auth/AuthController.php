@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Team;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,11 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
     private $redirectTo = '/newWork/create';
+
+    public function getRegister(Team $team)
+    {
+        return view('auth.register',['teams' => $team->getAllTeams()]);
+    }
 
     /**
      * Create a new authentication controller instance.
