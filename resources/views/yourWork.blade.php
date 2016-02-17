@@ -15,7 +15,7 @@
                         <label class="control-label">Bereits geleiste Arbeitsstunden</label>
                     </div>
                     <div class="col-md-2">
-                        <p>{{$work_activities->where('proven', 1)->sum('hours')}} Stunden</p>
+                        <p>{{$work_activities->whereLoose('proven', 1)->sum('hours')}} Stunden</p>
                     </div>
                 </div>
                 <div class="row">
@@ -23,7 +23,7 @@
                         <label class="control-label">Unbestätigte Arbeitsstunden</label>
                     </div>
                     <div class="col-md-2">
-                        <p>{{$work_activities->where('proven', 0)->sum('hours')}} Stunden</p>
+                        <p>{{$work_activities->whereLoose('proven', 0)->sum('hours')}} Stunden</p>
                     </div>
                 </div>
                 <div class="row">
@@ -31,8 +31,8 @@
                         <label class="control-label">Noch zu leistende Stunden</label>
                     </div>
                     <div class="col-md-2">
-                        @if($work_activities->where('proven', 1)->sum('hours') <= 10)
-                            <p>{{10 - $work_activities->where('proven', 1)->sum('hours')}} Stunden</p>
+                        @if($work_activities->whereLoose('proven', 1)->sum('hours') <= 10)
+                            <p>{{10 - $work_activities->whereLoose('proven', 1)->sum('hours')}} Stunden</p>
                         @else
                             <p>0</p>
                         @endif
@@ -40,13 +40,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        @if($work_activities->where('proven', 1)->sum('hours') <= 10)
+                        @if($work_activities->whereLoose('proven', 1)->sum('hours') <= 10)
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar"
                                      aria-valuenow="{{$work_activities->where('proven', 1)->sum('hours')}}"
                                      aria-valuemin="0" aria-valuemax="10"
                                      style="width:{{$work_activities->where('proven', 1)->sum('hours') / 10 * 100}}%;">
-                                    {{$work_activities->where('proven', 1)->sum('hours')}} von 10
+                                    {{$work_activities->whereLoose('proven', 1)->sum('hours')}} von 10
                                 </div>
                             </div>
                         @else
