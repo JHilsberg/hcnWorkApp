@@ -56,7 +56,7 @@
                                      style="width:10%;">10
                                 </div>
                                 <div class="progress-bar progress-bar-warning" role="progressbar"
-                                     style="width:{{($work_activities->where('proven', 1)->sum('hours') -10)}}%;">
+                                     style="width:{{($work_activities->whereLoose('proven', 1)->sum('hours') -10)}}%;">
                                 </div>
                             </div>
                         @endif
