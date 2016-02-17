@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-10 col-md-offset-1 col-xs-12">
-        <h2 class="text-center">Wilkommen in der Arbeitsstunden-App <br/> des HC Niesky 1920 e.V.</h2>
+        <h2 class="text-center">Willkommen in der Arbeitsstunden-App <br/> des HC Niesky 1920 e.V.</h2>
         <div class="row">
             <img class="img-responsive center-block" src="/images/logo.png">
         </div>
