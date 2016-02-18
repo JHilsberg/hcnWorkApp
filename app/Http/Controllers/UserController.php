@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\WorkActivity;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -93,8 +95,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
-
-        return back();
+        if($id == Auth::user()->id)
+        {
+            return back()->withErrors(['selfDelete' => 'Du kannst dich nicht selber löschen!']);
+        }else{
+            User::destroy($id);
+            return back();
+        }
     }
 }

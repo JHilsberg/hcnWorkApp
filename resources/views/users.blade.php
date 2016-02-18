@@ -10,6 +10,7 @@
                 <h4>Nutzerverwaltung</h4>
             </div>
             <div class="panel-body">
+                @include('errors.errors')
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
