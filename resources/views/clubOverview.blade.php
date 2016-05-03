@@ -19,7 +19,8 @@
                         <div class="col-md-3 datepicker-container">
                             <div class='input-group date' data-provide="datepicker" data-date-format="dd.mm.yyyy"
                                  data-date-language="de" data-date-container=".datepicker-container">
-                                <input readonly="true" class="form-control" name="date" value="{{ old('date') }}" placeholder="Enddatum auswählen">
+                                <input readonly="true" class="form-control" name="date" value="{{ old('date') }}"
+                                       placeholder="Enddatum auswählen">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -28,7 +29,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-3 col-md-offset-5">
-                            <textarea class="form-control" rows="3" placeholder="Nächste Termine hinzufügen" name="events"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Nächste Termine hinzufügen"
+                                      name="events"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success col-md-3 col-md-offset-5">
@@ -50,6 +52,19 @@
                     <label class="control-label col-md-5">Alle aktuell geleisteten Stunden auf inaktiv ändern</label>
                     <button type="submit" class="btn btn-danger col-md-3">
                         Deaktivieren
+                    </button>
+                </div>
+                {!! Form::close() !!}
+                {!! Form::open(array('route' => array('club.exportPDF'), 'method' => 'get','class' => 'form-horizontal')) !!}
+                <div class="form-group">
+                    <label class="control-label col-md-5">Team-Stunden als PDF anzeigen</label>
+                    <div class="col-md-3">
+                        {!! Form::select('team',$teams, 1,['class' =>'form-control']) !!}
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success col-md-3 col-md-offset-5">
+                        Anzeigen
                     </button>
                 </div>
                 {!! Form::close() !!}

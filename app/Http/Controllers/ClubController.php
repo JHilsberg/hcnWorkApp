@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Team;
 use App\User;
 use App\WorkActivity;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -22,13 +23,14 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Team $team)
     {
         $this->getOverviewChart();
 
         $allUsers = User::all()->sortBy('surname');
+        $allTeams = $team->getAllTeams();
 
-        return view('clubOverview', ['users' => $allUsers]);
+        return view('clubOverview', ['users' => $allUsers, 'teams' => $allTeams]);
     }
 
     /**
@@ -115,13 +117,34 @@ class ClubController extends Controller
             $date = $date->addWeeks(2);
         }
 
-        $linechart = \Lava::LineChart('Overview')
+        \Lava::LineChart('Overview')
             ->dataTable($clubOverviewChart)
             ->title('Stundenübersicht nach Team, Zeitraum 1 Jahr, Intervall 2 Wochen')
             ->setOptions(array(
                 'legend' => \Lava::Legend(array(
                     'position' => 'in'
                 ))));
+    }
+
+    private function getTeamsChart(){
+        $teamHoursDataTable = \Lava::DataTable();
+
+        foreach(Team::all()->sortBy('name') as $team){
+            $teamHoursDataTable->addNumberColumn($team->name);
+        }
+
+        foreach(Team::all() as $team){
+            $teamHoursDataTable->addRow([$team->workActivities()->sum('hours')]);
+        }
+
+        \Lava::LineChart('Overview')
+            ->dataTable($clubOverviewChart)
+            ->title('Stundenübersicht nach Team, Zeitraum 1 Jahr, Intervall 2 Wochen')
+            ->setOptions(array(
+                'legend' => \Lava::Legend(array(
+                    'position' => 'in'
+                ))));
+
     }
 
     private function getWorkingHoursForTeamAndDate($teamName, $date){
@@ -197,5 +220,13 @@ class ClubController extends Controller
 
         Session::flash('message', "Mails wurden gesendet!");
         return back();
+    }
+
+    public function generateTeamPDF(PDF $pdfCreator, Team $team){
+        $team = $team::find(Input::get('team'));
+        $membersOfTeam = $team->users()->get();
+        $pdf = $pdfCreator->loadView('pdf.teamHours', compact('membersOfTeam'));
+
+        return $pdf->stream('Arbeitsstunden');
     }
 }

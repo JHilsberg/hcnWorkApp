@@ -31,4 +31,8 @@ class Team extends Model
         return $this->hasMany('App\User', 'team_id');
     }
 
+    public function workActivities()
+    {
+        return $this->hasManyThrough('App\WorkActivity', 'App\User');
+    }
 }
