@@ -1,4 +1,4 @@
-<h2>Stundenübersicht</h2>
+<h2>Stundenübersicht - HC Niesky 1920</h2>
 <table border="1">
     <thead>
     <tr>
