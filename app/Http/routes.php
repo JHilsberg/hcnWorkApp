@@ -41,4 +41,5 @@ Route::group(array('middleware' => 'auth'), function() {
     Route::get('mail', 'ClubController@sendMailToUsers')->name('club.mail');
     Route::get('exportPDF', 'ClubController@generateTeamPDF')->name('club.exportPDF');
     Route::put('deactivateHours', 'ClubController@setAllHoursOnInactive')->name('club.setInactive');
+    Route::put('updateHours', 'NewWorkController@bisectHours')->name('newWork.bisect');
 });

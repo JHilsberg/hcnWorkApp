@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -129,5 +130,14 @@ class NewWorkController extends Controller
     {
         $activities_to_prove = Auth::user()->proveWorkActivities()->where('proven', false)->where('active', true)->orderBy('date', 'desc')->get();
         return view('proveWork', ['activities_to_prove' => $activities_to_prove]);
+    }
+
+    public function bisectHours()
+    {
+        $workActivity = WorkActivity::find(Input::get('id'));
+        $originalHours = $workActivity->hours;
+        $workActivity->hours = $originalHours/2;
+        $workActivity->save();
+        return back();
     }
 }

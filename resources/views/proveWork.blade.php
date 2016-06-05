@@ -18,6 +18,7 @@
                             <th>Beschreibung</th>
                             <th>Datum</th>
                             <th>Geleistete Stunden</th>
+                            <th>Halbieren</th>
                             <th>Bestätigen</th>
                             <th>Ablehnen</th>
                         </tr>
@@ -29,6 +30,10 @@
                                 <td>{{$activity->description}}</td>
                                 <td>{{date('d.m.Y', strtotime($activity->date))}}</td>
                                 <td>{{$activity->hours}} Stunden</td>
+                                <td>{!! Form::open(array('route' => array('newWork.bisect', 'id' => $activity->id),
+                                    'method' => 'put', 'style' => 'margin-bottom: 0px;')) !!}
+                                    {!! Form::submit('Stunden halbieren', array('class' => 'btn btn-default center-block')) !!}
+                                    {!! Form::close() !!}</td>
                                 <td>
                                     {!! Form::open(array('route' => array('newWork.update', 'id' => $activity->id),
                                     'method' => 'put', 'style' => 'margin-bottom: 0px;')) !!}
@@ -45,11 +50,20 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" style="text-align: center"><h4>Keine zu bestätigenden Arbeiten</h4></td>
+                                <td colspan="7" style="text-align: center"><h4>Keine zu bestätigenden Arbeiten</h4></td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+            <div class="panel panel-default" id="panel1">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Für folgende Arbeitsmaßnahmen ist nur die Hälfte der geleisteten Stunden anrechenbar</h4>
+                </div>
+                <div class="panel-body">
+                    <p></p>
                 </div>
             </div>
         </div>
